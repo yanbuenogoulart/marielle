@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Cunha | Marielle Franco e Evolução Política do Brasil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #6b46c1;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #6b46c1;
+        }
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .comparison-table th {
+            background-color: #5b21b6;
+            color: white;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f3f4f6;
+        }
+        .comparison-table tr:hover {
+            background-color: #e5e7eb;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 100%);
+        }
+        .marielle-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .reflection-card {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            transform: perspective(1000px) rotateX(5deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+        }
+        .timeline-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        .cause-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        @media (max-width: 768px) {
+            .timeline-item {
+                padding-left: 40px;
+            }
+            .timeline-dot {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-purple-900 text-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-user-tie text-2xl"></i>
+                <span class="font-bold text-xl">João Cunha</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#marielle" class="hover:text-purple-200 transition">Marielle Franco</a>
+                <a href="#timeline" class="hover:text-purple-200 transition">Linha do Tempo</a>
+                <a href="#comparison" class="hover:text-purple-200 transition">Democracia</a>
+                <a href="#reflection" class="hover:text-purple-200 transition">Reflexão</a>
+            </div>
+            <button class="md:hidden text-xl" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-purple-800 w-full py-2 px-4" id="mobile-menu">
+            <a href="#marielle" class="block py-2 hover:text-purple-200 transition">Marielle Franco</a>
+            <a href="#timeline" class="block py-2 hover:text-purple-200 transition">Linha do Tempo</a>
+            <a href="#comparison" class="block py-2 hover:text-purple-200 transition">Democracia</a>
+            <a href="#reflection" class="block py-2 hover:text-purple-200 transition">Reflexão</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white pt-20 pb-16">
+        <div class="container mx-auto px-4 py-16 md:py-24 flex flex-col items-center text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">João Cunha</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mb-8">Análise da trajetória política brasileira e o legado de Marielle Franco</p>
+            <div class="flex space-x-4">
+                <a href="#marielle" class="bg-white text-purple-900 font-bold px-6 py-2 rounded-full hover:bg-purple-100 transition duration-300 shadow-lg">
+                    Marielle Franco
+                </a>
+                <a href="#timeline" class="bg-purple-800 text-white font-bold px-6 py-2 rounded-full hover:bg-purple-700 transition duration-300 shadow-lg">
+                    Linha do Tempo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="timeline-container">
+        <!-- Marielle Franco Section -->
+        <section class="slide marielle-hero text-white py-20" id="marielle">
+            <div class="container mx-auto px-4 py-12">
+                <div class="max-w-4xl mx-auto bg-black bg-opacity-70 p-8 rounded-xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Marielle Franco: Uma Luta Pela Justiça e Igualdade</h2>
+                    <p class="text-xl text-center mb-8">Contribuições Sociais e Políticas para o Brasil</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Biography -->
+                        <div class="bg-purple-900 bg-opacity-70 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-user mr-2"></i> Quem foi Marielle Franco?
+                            </h3>
+                            <p class="mb-4">Marielle Franco (1979-2018) foi uma vereadora, socióloga e ativista brasileira, natural do Rio de Janeiro. Ela ficou conhecida por sua defesa das mulheres negras, das comunidades periféricas e das populações LGBTQIA+.</p>
+                            <p>Foi assassinada em 14 de março de 2018, em um crime até hoje não totalmente esclarecido, mas que gerou grande repercussão no Brasil e no mundo, aumentando ainda mais a visibilidade de sua luta.</p>
+                        </div>
+                        
+                        <!-- Formation -->
+                        <div class="bg-purple-900 bg-opacity-70 p-6 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-graduation-cap mr-2"></i> Formação e Ascensão Política
+                            </h3>
+                            <p class="mb-2">• Nascida na Maré, uma das favelas mais conhecidas do Rio de Janeiro</p>
+                            <p class="mb-2">• Graduada em Sociologia pela PUC-Rio</p>
+                            <p class="mb-2">• Pós-graduação em Administração Pública</p>
+                            <p>• Eleita vereadora pelo PSOL em 2016</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contributions -->
+                <div class="max-w-6xl mx-auto mt-12">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-8 text-center text-white">Contribuições Políticas e Sociais</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="cause-card bg-white p-6 rounded-lg shadow-lg transition duration-300">
+                            <div class="text-purple-600 text-3xl mb-4">
+                                <i class="fas fa-female"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 text-purple-900">Mulheres Negras</h4>
+                            <p class="text-gray-700">Combateu o racismo estrutural e a violência policial contra jovens negros, destacando desigualdades de gênero e raça.</p>
+                        </div>
+                        
+                        <div class="cause-card bg-white p-6 rounded-lg shadow-lg transition duration-300">
+                            <div class="text-purple-600 text-3xl mb-4">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 text-purple-900">Educação</h4>
+                            <p class="text-gray-700">Projetos para melhorar o acesso à educação nas comunidades de favelas.</p>
+                        </div>
+                        
+                        <div class="cause-card bg-white p-6 rounded-lg shadow-lg transition duration-300">
+                            <div class="text-purple-600 text-3xl mb-4">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 text-purple-900">Segurança Pública</h4>
+                            <p class="text-gray-700">Denúncia da violência policial e abusos de poder nas comunidades.</p>
+                        </div>
+                        
+                        <div class="cause-card bg-white p-6 rounded-lg shadow-lg transition duration-300">
+                            <div class="text-purple-600 text-3xl mb-4">
+                                <i class="fas fa-rainbow"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 text-purple-900">LGBTQIA+</h4>
+                            <p class="text-gray-700">Defesa dos direitos da comunidade LGBTQIA+ e combate à discriminação.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Legacy -->
+                <div class="max-w-4xl mx-auto mt-16 bg-purple-900 bg-opacity-80 p-8 rounded-xl">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center">O Legado de Marielle Franco</h3>
+                    <p class="text-center mb-6">Marielle não é apenas uma figura da política; ela representa um movimento de justiça social e direitos humanos. Seu legado continua a inspirar jovens ativistas no Brasil e no mundo.</p>
+                    <div class="text-center">
+                        <span class="bg-white text-purple-900 font-bold px-4 py-2 rounded-full">
+                            #JustiçaParaMarielle
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="slide container mx-auto px-4 py-20" id="timeline">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-purple-900">Linha do Tempo da Evolução Política do Brasil</h2>
+            
+            <!-- 1822 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="bg-purple-100 text-purple-900 font-bold px-4 py-1 rounded-full text-sm md:mr-4 mb-2 md:mb-0 w-fit">1822</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900">Independência do Brasil</h3>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-calendar-day text-purple-600 mr-2"></i>Evento:</h4>
+                        <p class="text-gray-700">O Brasil declara sua independência de Portugal, com Dom Pedro I sendo proclamado imperador.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-bullseye text-purple-600 mr-2"></i>Impacto:</h4>
+                        <p class="text-gray-700">Fim da condição de colônia e início do Império do Brasil. A estrutura política brasileira começa a se moldar, com uma monarquia, e a sociedade ainda sem grandes mudanças no que diz respeito à representação popular.</p>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center">
+                            <i class="fas fa-crown mr-1"></i> Período Imperial
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 1888 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="bg-purple-100 text-purple-900 font-bold px-4 py-1 rounded-full text-sm md:mr-4 mb-2 md:mb-0 w-fit">1888</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900">Abolição da Escravidão</h3>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-calendar-day text-purple-600 mr-2"></i>Evento:</h4>
+                        <p class="text-gray-700">A assinatura da Lei Áurea, que aboliu a escravidão no Brasil.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-bullseye text-purple-600 mr-2"></i>Impacto:</h4>
+                        <p class="text-gray-700">Uma mudança social importante, mas não necessariamente política. A elite escravocrata perdeu sua base econômica, e a mudança não trouxe grandes avanços imediatos para os ex-escravizados, que continuaram marginalizados.</p>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center">
+                            <i class="fas fa-chains mr-1"></i> Fim da Escravidão
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 1889 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="bg-purple-100 text-purple-900 font-bold px-4 py-1 rounded-full text-sm md:mr-4 mb-2 md:mb-0 w-fit">1889</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900">Proclamação da República</h3>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-calendar-day text-purple-600 mr-2"></i>Evento:</h4>
+                        <p class="text-gray-700">O golpe militar que depôs o imperador Dom Pedro II e proclamou a República.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-bullseye text-purple-600 mr-2"></i>Impacto:</h4>
+                        <p class="text-gray-700">Fim da monarquia e início da República Velha. O Brasil passa a be uma república presidencialista, mas o sistema ainda era oligárquico e o voto era restrito, não abrangendo a grande maioria da população.</p>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center">
+                            <i class="fas fa-flag mr-1"></i> República Velha
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 1891 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="bg-purple-100 text-purple-900 font-bold px-4 py-1 rounded-full text-sm md:mr-4 mb-2 md:mb-0 w-fit">1891</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900">Constituição Republicana</h3>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-calendar-day text-purple-600 mr-2"></i>Evento:</h4>
+                        <p class="text-gray-700">A promulgação da primeira Constituição republicana, estabelecendo as bases legais do novo regime.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-bullseye text-purple-600 mr-2"></i>Impacto:</h4>
+                        <p class="text-gray-700">A formalização do regime republicano. No entanto, o voto ainda era muito restrito, limitando a participação da população (somente homens alfabetizados podiam votar).</p>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center">
+                            <i class="fas fa-gavel mr-1"></i> Constituição
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 1930 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="bg-purple-100 text-purple-900 font-bold px-4 py-1 rounded-full text-sm md:mr-4 mb-2 md:mb-0 w-fit">1930</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-purple-900">Revolução de 1930</h3>
+                    </div>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-calendar-day text-purple-600 mr-2"></i>Evento:</h4>
+                        <p class="text-gray-700">A Revolução de 1930, liderada por Getúlio Vargas, que depôs o presidente Washington Luís e deu início à Era Vargas.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2"><i class="fas fa-bullseye text-purple-600 mr-2"></i>Impacto:</h4>
+                        <p class="text-gray-700">Fim da República Velha e início de um novo período de centralização política. Vargas implementa reformas significativas, mas o país passa a viver sob um regime de governo autoritário em diversas fases.</p>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center">
+                            <i class="fas fa-exchange-alt mr-1"></i> Era Vargas
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="slide bg-gray-100 py-20" id="comparison">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-purple-900">Democracia: Ideal vs. Realidade Brasileira</h2>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th class="w-1/4">Aspecto</th>
+                                <th class="w-1/3">Democracia Ideal</th>
+                                <th class="w-1/3">Realidade Brasileira</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-semibold">Participação Política</td>
+                                <td>Todos os cidadãos têm direito pleno ao voto e à escolha dos seus governantes.</td>
+                                <td>O voto foi inicialmente restrito (ex: voto censitário, voto feminino só em 1932, etc.).</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Liberdade de Expressão</td>
+                                <td>Liberdade total para a imprensa, protestos e debates públicos.</td>
+                                <td>A censura foi uma constante durante períodos como a Ditadura Militar.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Representação Popular</td>
+                                <td>O governo reflete a vontade do povo.</td>
+                                <td>O Brasil teve longos períodos de representações elitistas, com pouca representatividade popular real.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Igualdade Social</td>
+                                <td>Todos têm os mesmos direitos, independentemente de raça, classe ou gênero.</td>
+                                <td>A desigualdade social e racial sempre foi um grande problema, com a exclusão de grandes partes da população (ex: negros, pobres, mulheres).</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Liberdade Econômica</td>
+                                <td>O sistema permite a mobilidade social e econômica para todos.</td>
+                                <td>Grande concentração de riqueza nas mãos de poucas elites, o que impede a mobilidade social.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Sistema Eleitoral</td>
+                                <td>O sistema garante eleições livres e justas, sem fraudes ou manipulações.</td>
+                                <td>Em muitos períodos da história brasileira, houve fraudes, manipulação e controle das eleições por elites.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-purple-600 text-4xl mb-4">
+                            <i class="fas fa-vote-yea"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-purple-900">Participação Política</h3>
+                        <p class="text-gray-700">A evolução do direito ao voto no Brasil foi lenta e gradual, com muitas exclusões ao longo do processo histórico.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-purple-600 text-4xl mb-4">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-purple-900">Liberdade de Expressão</h3>
+                        <p class="text-gray-700">Períodos de censura e restrição às liberdades individuais marcaram nossa história política.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-purple-600 text-4xl mb-4">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-purple-900">Igualdade Social</h3>
+                        <p class="text-gray-700">As desigualdades estruturais persistem, mostrando que a democracia formal não garantiu justiça social.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="slide py-20" id="reflection">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="reflection-card text-white p-8 md:p-12 rounded-2xl mb-12">
+                        <div class="text-5xl mb-6 text-center">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-xl md:text-2xl italic text-center mb-6">
+                            "A democracia não é apenas o direito de votar, mas a constante luta por uma sociedade mais justa, onde todas as vozes sejam ouvidas e respeitadas, sem exceções."
+                        </p>
+                        <div class="text-center">
+                            <span class="bg-white text-purple-900 font-bold px-4 py-2 rounded-full">
+                                Reflexão Final sobre a Democracia
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="p-6 md:p-8">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-purple-900">O Caminho da Democracia Brasileira</h2>
+                            <div class="space-y-4">
+                                <p class="text-gray-700">A história política do Brasil revela uma trajetória complexa em direção à democracia. Desde a independência em 1822, passando pela abolição da escravidão, proclamação da república e diversos regimes políticos, nosso país tem buscado consolidar instituições democráticas.</p>
+                                <p class="text-gray-700">No entanto, como mostra nossa análise comparativa, ainda há um longo caminho a percorrer para alcançarmos uma democracia plena, com igualdade de direitos e oportunidades para todos os cidadãos.</p>
+                                <p class="text-gray-700">A reflexão sobre nossa história nos convida a pensar criticamente sobre os desafios atuais e futuros da democracia brasileira, e o papel de cada cidadão na construção de uma sociedade mais justa e inclusiva.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marielle's Final Reflection -->
+                    <div class="mt-12 bg-black text-white p-8 rounded-xl">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4 text-purple-400">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-xl md:text-2xl italic mb-4">
+                                "Marielle não morreu, ela multiplicou-se. Seu legado permanece vivo na luta por justiça, igualdade e liberdade para todos."
+                            </p>
+                            <p class="text-sm">- Homenagem a Marielle Franco</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-purple-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-user-tie text-2xl"></i>
+                        <span class="font-bold text-xl">João Cunha</span>
+                    </div>
+                    <p class="max-w-md">Análise histórica e política sobre o Brasil e o legado de Marielle Franco.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-2xl hover:text-purple-200 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-2xl hover:text-purple-200 transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-2xl hover:text-purple-200 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl hover:text-purple-200 transition"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-purple-800 mt-8 pt-8 text-center md:text-left">
+                <p>&copy; 2023 João Cunha. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation to timeline items when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {threshold: 0.1});
+
+        document.querySelectorAll('.timeline-item, .cause-card').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
